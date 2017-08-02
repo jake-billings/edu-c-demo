@@ -51,6 +51,8 @@ std::istream& operator>>(std::istream &in, Vehicle &car1) {
     in >> car1.make;
     std::cout << "Model:\t";
     in >> car1.model;
+    std::cout << "VIN:\t";
+    in >> car1.VIN;
     std::cout << "Year:\t";
     in >> car1.year;
     std::cout << "Price:\t";

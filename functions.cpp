@@ -35,7 +35,7 @@ bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
             updateVehicle(inventory);
             break;
         case 4:
-//            deleteVehicle(inventory);
+            deleteVehicle(inventory);
             break;
         case 5:
 //            sortInventoryByVIN(inventory);
@@ -84,6 +84,14 @@ void updateVehicle(std::vector<Vehicle>& inventory) {
     std::cout<<"Now updating vehicle "<<i<<std::endl;
     std::cin >> inventory[i];
     std::cout << std::endl << "Updated vehicle in inventory." << std::endl;
+}
+
+void deleteVehicle(std::vector<Vehicle>& inventory) {
+    std::cout<<"Pick a vehicle by its #: ";
+    int i;
+    std::cin >> i;
+    inventory.erase(inventory.begin() + i);
+    std::cout << std::endl << "Deleted vehicle from inventory." << std::endl;
 }
 
 void unknownOption() {
