@@ -1,4 +1,4 @@
-practice-c-classes
+edu-c-demo
 ==================
 
 This code was written specifically to as a summer test in order to get into CSCI2312 at University of Colorado Denver in the Fall 2017 Semester.
