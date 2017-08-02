@@ -15,6 +15,7 @@ bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
     std::cout << "6.\tSearch inventory by Model" << std::endl;
     std::cout << "7.\tRead inventory from file" << std::endl;
     std::cout << "8.\tWrite inventory to file" << std::endl;
+    std::cout << "9.\tExit" << std::endl;
 
     //Read the user's choice
     std::cout << "Select a number: ";
@@ -31,7 +32,7 @@ bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
             addVehicle(inventory);
             break;
         case 3:
-//            updateVehicle(inventory);
+            updateVehicle(inventory);
             break;
         case 4:
 //            deleteVehicle(inventory);
@@ -48,12 +49,14 @@ bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
         case 8:
 //            writeInventoryFromFile(inventory);
             break;
+        case 9:
+            return false;
         default:
             unknownOption();
             break;
     }
 
-    return false;
+    return true;
 }
 
 void displayInventory(std::vector<Vehicle>& inventory) {
@@ -72,6 +75,15 @@ void addVehicle(std::vector<Vehicle>& inventory) {
     std::cin >> v;
     inventory.push_back(v);
     std::cout << std::endl << "Added new vehicle to inventory." << std::endl;
+}
+
+void updateVehicle(std::vector<Vehicle>& inventory) {
+    std::cout<<"Pick a vehicle by its #: ";
+    int i;
+    std::cin >> i;
+    std::cout<<"Now updating vehicle "<<i<<std::endl;
+    std::cin >> inventory[i];
+    std::cout << std::endl << "Updated vehicle in inventory." << std::endl;
 }
 
 void unknownOption() {
