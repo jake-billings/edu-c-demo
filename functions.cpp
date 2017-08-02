@@ -6,6 +6,7 @@
 
 bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
     //Print menu
+    std::cout << std::endl;
     std::cout << "1.\tDisplay Inventory" << std::endl;
     std::cout << "2.\tAdd a vehicle" << std::endl;
     std::cout << "3.\tUpdate a vehicle" << std::endl;
@@ -61,6 +62,7 @@ void displayInventory(std::vector<Vehicle>& inventory) {
         return;
     }
     for (unsigned int i=0; i<inventory.size();i++) {
+        std::cout<<"Vehicle:\t"<<i<<std::endl;
         std::cout<<inventory[i]<<std::endl<<std::endl;
     }
 }
@@ -69,7 +71,7 @@ void addVehicle(std::vector<Vehicle>& inventory) {
     Vehicle v;
     std::cin >> v;
     inventory.push_back(v);
-    std::cout << "Added new vehicle to inventory." << std::endl;
+    std::cout << std::endl << "Added new vehicle to inventory." << std::endl;
 }
 
 void unknownOption() {
