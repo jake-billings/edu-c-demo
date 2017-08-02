@@ -79,19 +79,23 @@ void addVehicle(std::vector<Vehicle>& inventory) {
 }
 
 void updateVehicle(std::vector<Vehicle>& inventory) {
+    displayInventory(inventory);
+
     std::cout<<"Pick a vehicle by its #: ";
     int i;
     std::cin >> i;
     std::cout<<"Now updating vehicle "<<i<<std::endl;
-    std::cin >> inventory[i];
+    std::cin >> inventory[i-1];
     std::cout << std::endl << "Updated vehicle in inventory." << std::endl;
 }
 
 void deleteVehicle(std::vector<Vehicle>& inventory) {
+    displayInventory(inventory);
+
     std::cout<<"Pick a vehicle by its #: ";
     int i;
     std::cin >> i;
-    inventory.erase(inventory.begin() + i);
+    inventory.erase(inventory.begin() + i - 1);
     std::cout << std::endl << "Deleted vehicle from inventory." << std::endl;
 }
 
