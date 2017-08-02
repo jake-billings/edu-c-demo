@@ -33,6 +33,9 @@ public:
 
     friend std::ostream& operator<<(std::ostream &out, Vehicle &car1);
     friend std::istream& operator>>(std::istream &out, Vehicle &car1);
+
+    void serialize(std::ostream &out);
+    void deserialize(std::istream &in);
 };
 
 

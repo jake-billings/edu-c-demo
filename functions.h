@@ -15,8 +15,8 @@ void updateVehicle(std::vector<Vehicle>& inventory);
 void deleteVehicle(std::vector<Vehicle>& inventory);
 void sortInventoryByVIN(std::vector<Vehicle>& inventory);
 void searchInventoryByModel(std::vector<Vehicle>& inventory);
-//void readInventoryFromFile(std::vector<Vehicle>& inventory);
-//void writeInventoryFromFile(std::vector<Vehicle>& inventory);
+void readInventoryFromFile(std::vector<Vehicle>& inventory);
+void writeInventoryToFile(std::vector<Vehicle>& inventory);
 void unknownOption();
 
 #endif //EDU_C_DEMO_FUNCTIONS_H

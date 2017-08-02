@@ -36,26 +36,26 @@ double Vehicle::getPrice() {
     return this->price;
 }
 std::ostream& operator<<(std::ostream &out, Vehicle &car1) {
-    out << "VIN: " << car1.getVIN() << std::endl;
-    out << "Make: " << car1.getMake() << std::endl;
-    out << "Model: " << car1.getModel() << std::endl;
-    out << "Year: " << car1.getYear() << std::endl;
-    out << "Price: $" << car1.getPrice() << std::endl;
+    out << "VIN:\t\t" << car1.getVIN() << std::endl;
+    out << "Make:\t\t" << car1.getMake() << std::endl;
+    out << "Model:\t\t" << car1.getModel() << std::endl;
+    out << "Year:\t\t" << car1.getYear() << std::endl;
+    out << "Price:\t\t$" << car1.getPrice() << std::endl;
     Dealer dealer = *car1.DealerPtr;
-    out << "Dealer Name: " << dealer.getName() << std::endl;
-    out << "Dealer Address: " << dealer.getAddress() << std::endl;
+    out << "Dealer Name:\t\t" << dealer.getName() << std::endl;
+    out << "Dealer Address:\t\t" << dealer.getAddress() << std::endl;
     return out;
 }
 std::istream& operator>>(std::istream &in, Vehicle &car1) {
-    std::cout << "Make:\t";
+    std::cout << "Make:\t\t";
     in >> car1.make;
-    std::cout << "Model:\t";
+    std::cout << "Model:\t\t";
     in >> car1.model;
-    std::cout << "VIN:\t";
+    std::cout << "VIN:\t\t";
     in >> car1.VIN;
-    std::cout << "Year:\t";
+    std::cout << "Year:\t\t";
     in >> car1.year;
-    std::cout << "Price:\t";
+    std::cout << "Price:\t\t";
     in >> car1.price;
 
     Dealer* d = new Dealer(); //Allocate on the heap
@@ -63,12 +63,41 @@ std::istream& operator>>(std::istream &in, Vehicle &car1) {
     //Read strings then call setters
     std::string DealerName;
     std::string DealerAddress;
-    std::cout << "Dealer Name:\t";
+    std::cout << "Dealer Name:\t\t";
     in >> DealerName;
-    std::cout << "Dealer Address:\t";
+    std::cout << "Dealer Address:\t\t";
     in >> DealerAddress;
     d->setName(DealerName);
     d->setAddress(DealerAddress);
 
     return in;
+}
+
+void Vehicle::serialize(std::ostream &out) {
+    out << this->getVIN() << std::endl;
+    out << this->getMake() << std::endl;
+    out << this->getModel() << std::endl;
+    out << this->getYear() << std::endl;
+    out << this->getPrice() << std::endl;
+    Dealer dealer = *this->DealerPtr;
+    out << dealer.getName() << std::endl;
+    out << dealer.getAddress();
+}
+
+void Vehicle::deserialize(std::istream &in) {
+    in >> this->make;
+    in >> this->model;
+    in >> this->VIN;
+    in >> this->year;
+    in >> this->price;
+
+    Dealer* d = new Dealer(); //Allocate on the heap
+    this->DealerPtr = d; //Assign the pointer
+    //Read strings then call setters
+    std::string DealerName;
+    std::string DealerAddress;
+    in >> DealerName;
+    in >> DealerAddress;
+    d->setName(DealerName);
+    d->setAddress(DealerAddress);
 }

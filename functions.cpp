@@ -2,6 +2,7 @@
 // Created by Jake Billings on 8/2/17.
 //
 #include <iostream>
+#include <fstream>
 #include "functions.h"
 
 bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
@@ -44,10 +45,10 @@ bool userInterfaceLoop(std::vector<Vehicle>& inventory) {
             searchInventoryByModel(inventory);
             break;
         case 7:
-//            readInventoryFromFile(inventory);
+            readInventoryFromFile(inventory);
             break;
         case 8:
-//            writeInventoryFromFile(inventory);
+            writeInventoryToFile(inventory);
             break;
         case 9:
             return false;
@@ -131,6 +132,36 @@ void searchInventoryByModel(std::vector<Vehicle>& inventory) {
         std::cout<<results[i]<<std::endl;
     }
 
+}
+
+void readInventoryFromFile(std::vector<Vehicle>& inventory) {
+    std::ifstream input;
+    input.open("main.dealership");
+
+    unsigned int count = 0;
+
+    while (input.peek()!=EOF) {
+        Vehicle v;
+        v.deserialize(input);
+        inventory.push_back(v);
+        count++;
+    }
+    std::cout << std::endl << "Loaded "<< count << " vehicles." << std::endl;
+}
+
+void writeInventoryToFile(std::vector<Vehicle>& inventory) {
+    std::ofstream output;
+    output.open("main.dealership");
+
+    for (unsigned long i = 0; i<inventory.size(); i++) {
+        if (i!=0) output<<std::endl;
+        inventory[i].serialize(output);
+    }
+
+    output.flush();
+
+    output.close();
+    std::cout << std::endl << "Saved "<< inventory.size() << " vehicles." << std::endl;
 }
 
 
