@@ -19,6 +19,9 @@ private:
 public:
     Dealer* DealerPtr;
 
+    Vehicle();
+    Vehicle(std::string iVin, std::string iMake, unsigned int iYear, double iPrice);
+
     void setVIN(std::string input);
     void setMake(std::string input);
     void setModel(std::string input);

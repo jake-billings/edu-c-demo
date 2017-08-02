@@ -4,6 +4,15 @@
 
 #include "Vehicle.h"
 
+Vehicle::Vehicle(){
+}
+Vehicle::Vehicle(std::string iVin, std::string iMake, unsigned int iYear, double iPrice) {
+    this->setVIN(iVin);
+    this->setMake(iMake);
+    this->setYear(iYear);
+    this->setPrice(iPrice);
+}
+
 void Vehicle::setVIN(std::string input) {
     this->VIN = input;
 }
