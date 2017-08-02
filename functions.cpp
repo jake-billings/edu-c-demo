@@ -66,7 +66,7 @@ void displayInventory(std::vector<Vehicle>& inventory) {
         return;
     }
     for (unsigned int i=0; i<inventory.size();i++) {
-        std::cout<<"Vehicle:\t"<<i<<std::endl;
+        std::cout<<"Vehicle:\t"<<i+1<<std::endl;
         std::cout<<inventory[i]<<std::endl<<std::endl;
     }
 }
@@ -128,7 +128,7 @@ void searchInventoryByModel(std::vector<Vehicle>& inventory) {
     }
 
     for (unsigned long i = 0; i<results.size(); i++) {
-        std::cout<<"Result #: "<<i<<std::endl;
+        std::cout<<"Result #: "<<i+1<<std::endl;
         std::cout<<results[i]<<std::endl;
     }
 
