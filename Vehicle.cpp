@@ -5,12 +5,15 @@
 #include "Vehicle.h"
 
 Vehicle::Vehicle(){
+    Dealer* d = new Dealer();
+    this->DealerPtr=d;
 }
 Vehicle::Vehicle(std::string iVin, std::string iMake, unsigned int iYear, double iPrice) {
     this->setVIN(iVin);
     this->setMake(iMake);
     this->setYear(iYear);
     this->setPrice(iPrice);
+    Vehicle();
 }
 
 void Vehicle::setVIN(std::string input) {
@@ -100,13 +103,11 @@ void Vehicle::deserialize(std::istream &in) {
     in >> this->year;
     in >> this->price;
 
-    Dealer* d = new Dealer(); //Allocate on the heap
-    this->DealerPtr = d; //Assign the pointer
     //Read strings then call setters
     std::string DealerName;
     std::string DealerAddress;
     in >> DealerName;
     in >> DealerAddress;
-    d->setName(DealerName);
-    d->setAddress(DealerAddress);
+    this->DealerPtr->setName(DealerName);
+    this->DealerPtr->setAddress(DealerAddress);
 }
