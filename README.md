@@ -1,6 +1,8 @@
 edu-c-demo
 ==================
 
+[![DOI](https://zenodo.org/badge/99153052.svg)](https://zenodo.org/badge/latestdoi/99153052)
+
 This code was written specifically to as a summer test in order to get into CSCI2312 at University of Colorado Denver in the Fall 2017 Semester.
 
 ![Screenshot](imgs/screenshot.png)
