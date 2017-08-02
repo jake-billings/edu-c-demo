@@ -32,6 +32,7 @@ public:
     double getPrice();
 
     friend std::ostream& operator<<(std::ostream &out, Vehicle &car1);
+    friend std::istream& operator>>(std::istream &out, Vehicle &car1);
 };
 
 

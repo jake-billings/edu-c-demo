@@ -46,3 +46,27 @@ std::ostream& operator<<(std::ostream &out, Vehicle &car1) {
     out << "Dealer Address: " << dealer.getAddress() << std::endl;
     return out;
 }
+std::istream& operator>>(std::istream &in, Vehicle &car1) {
+    std::cout << "Make: ";
+    in >> car1.make;
+    std::cout << "Model: ";
+    in >> car1.model;
+    std::cout << "Year: ";
+    in >> car1.year;
+    std::cout << "Price: ";
+    in >> car1.price;
+
+    Dealer* d = new Dealer(); //Allocate on the heap
+    car1.DealerPtr = d; //Assign the pointer
+    //Read strings then call setters
+    std::string DealerName;
+    std::string DealerAddress;
+    in >> DealerName;
+    in >> DealerAddress;
+    std::cout << "Dealer Name: ";
+    d->setName(DealerName);
+    std::cout << "Dealer Address: ";
+    d->setAddress(DealerAddress);
+
+    return in;
+}
